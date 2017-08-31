@@ -30,7 +30,7 @@ describe('Thermostat', function() {
   });
 
   describe('#powerMode', function() {
-    it('power mode is on by default', function() {
+    it('on by default', function() {
       expect(thermostat.powerMode).toEqual(true);
     });
 
@@ -67,7 +67,7 @@ describe('Thermostat', function() {
           expect(thermostat.currentUsage()).toEqual('medium-usage')
       });
 
-      it('gives medium-usage below 25 degrees', function() {
+      it('gives high-usage above 25 degrees', function() {
           thermostat.temp = 30;
           expect(thermostat.currentUsage()).toEqual('high-usage')
       });
