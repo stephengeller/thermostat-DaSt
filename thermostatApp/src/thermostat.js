@@ -41,3 +41,14 @@ Thermostat.prototype.currentUsage = function() {
     return 'high-usage';
   }
 };
+
+Thermostat.prototype.powerModeSet = function(boolean) {
+  if (boolean === true) {
+    if (this.temp > POWER_MODE_MAX) {
+      this.temp = POWER_MODE_MAX
+    }
+    this.powerMode = true
+  }else if (boolean === false) {
+    this.powerMode = false
+  }
+};

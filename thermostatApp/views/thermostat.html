@@ -19,35 +19,39 @@
         <button id="powersaving-off">PSM off</button>
     </p>
     <script>
-        $(document).ready(function(){
-          var thermostat = new Thermostat();
-          $('#temperature').text(thermostat.temp);
+        $(document).ready(function() {
+            var thermostat = new Thermostat();
+            updateTemperature();
 
-        $('#temperature-up').click(function() {
-            thermostat.up();
-            $('#temperature').text(thermostat.temp);
-        });
-        $('#temperature-down').click(function() {
-            thermostat.down();
-            $('#temperature').text(thermostat.temp);
-        });
-        $('#temperature-reset').click(function() {
-            thermostat.reset();
-            $('#temperature').text(thermostat.temp);
-        });
-        $('#powersaving-on').click(function() {
-            thermostat.powerMode = true;
-            $('#temperature').text(thermostat.temp);
-            $('#power-saving-status').text('on')
-        });
-        $('#powersaving-off').click(function() {
-            thermostat.powerMode = false;
-            $('#temperature').text(thermostat.temp);
-            $('#power-saving-status').text('off')
-        });
+            $('#temperature-up').click(function () {
+                thermostat.up();
+                updateTemperature()
+            });
+            $('#temperature-down').click(function () {
+                thermostat.down();
+                updateTemperature()
+            });
+            $('#temperature-reset').click(function () {
+                thermostat.reset();
+                updateTemperature()
+            });
+            $('#powersaving-on').click(function () {
+                thermostat.powerModeSet(true);
+                $('#power-saving-status').text('on');
+                updateTemperature()
+            });
+            $('#powersaving-off').click(function () {
+                thermostat.powerModeSet(false);
+                $('#power-saving-status').text('off');
+                updateTemperature()
 
+            });
 
-      })
+            function updateTemperature() {
+                $('#temperature').text(thermostat.temp);
+                $('#temperature').attr('class', thermostat.currentUsage());
+            };
+        });
 
     </script>
 
@@ -57,3 +61,4 @@
 </html>
 
 <script src="../src/thermostat.js"></script>
+<script src="../style.css"></script>

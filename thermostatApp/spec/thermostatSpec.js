@@ -41,8 +41,14 @@ describe('Thermostat', function() {
         expect(thermostat.temp).toEqual(25);
     });
 
+    it('when turning on, sets temp to 25 if above', function() {
+        thermostat.temp = 30;
+        thermostat.powerModeSet(true);
+        expect(thermostat.temp).toEqual(25);
+    });
+
     it('when off, maximum temperature is 32', function() {
-        thermostat.powerMode = false;
+        thermostat.powerModeSet(false);
         thermostat.temp = 32;
         thermostat.up();
         expect(thermostat.temp).toEqual(32);
