@@ -2,64 +2,34 @@
 <html>
 
 <head>
-    <title>Thermostat</title>
+  <title>Thermostat</title>
+  <link rel="stylesheet" href="../style.css">
 </head>
 
 <body>
-    <script src="jquery-3.2.1.js"></script>
-    <link rel="stylesheet" href="../style.css">
-    <h1 align="center"> Thermostat! </h1>
-<section>
+
+  <h1 align="center"> Thermostat! </h1>
+  <section>
     <h1 id="temperature" align="center"></h1>
     <p align="center">
-        <button id="temperature-up">+</button>
-        <button id="temperature-down">-</button>
-        <button id="temperature-reset">reset</button>
-        power saving mode is <span id="power-saving-status">on</span>
-        <button id="powersaving-on">PSM on</button>
-        <button id="powersaving-off">PSM off</button>
+      <button id="temperature-up">+</button>
+      <button id="temperature-down">-</button>
+      <button id="temperature-reset">reset</button>
+      power saving mode is <span id="power-saving-status">on</span>
+      <button id="powersaving-on">PSM on</button>
+      <button id="powersaving-off">PSM off</button>
     </p>
-    <script>
-        $(document).ready(function() {
-            var thermostat = new Thermostat();
-            updateTemperature();
 
-            $('#temperature-up').click(function () {
-                thermostat.up();
-                updateTemperature()
-            });
-            $('#temperature-down').click(function () {
-                thermostat.down();
-                updateTemperature()
-            });
-            $('#temperature-reset').click(function () {
-                thermostat.reset();
-                updateTemperature()
-            });
-            $('#powersaving-on').click(function () {
-                thermostat.powerModeSet(true);
-                $('#power-saving-status').text('on');
-                updateTemperature()
-            });
-            $('#powersaving-off').click(function () {
-                thermostat.powerModeSet(false);
-                $('#power-saving-status').text('off');
-                updateTemperature()
+  </section>
+  <script src="jquery-3.2.1.js"></script>
+  <script src="../src/thermostat.js"></script>
+  <script src="interface.js"></script>
 
-            });
 
-            function updateTemperature() {
-                $('#temperature').text(thermostat.temp);
-                $('#temperature').attr('class', thermostat.currentUsage());
-            };
-        });
 
-    </script>
-
-</section>
 </body>
 
 </html>
 
-<script src="../src/thermostat.js"></script>
+
 <script src="../style.css"></script>
