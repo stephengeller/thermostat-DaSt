@@ -19,9 +19,36 @@
         <button id="powersaving-off">PSM off</button>
     </p>
     <script>
+        $(document).ready(function(){
+          var thermostat = new Thermostat();
+          $('#temperature').text(thermostat.temp);
+
         $('#temperature-up').click(function() {
-            alert('temperature.up')
+            thermostat.up();
+            $('#temperature').text(thermostat.temp);
         });
+        $('#temperature-down').click(function() {
+            thermostat.down();
+            $('#temperature').text(thermostat.temp);
+        });
+        $('#temperature-reset').click(function() {
+            thermostat.reset();
+            $('#temperature').text(thermostat.temp);
+        });
+        $('#powersaving-on').click(function() {
+            thermostat.powerMode = true;
+            $('#temperature').text(thermostat.temp);
+            $('#power-saving-status').text('on')
+        });
+        $('#powersaving-off').click(function() {
+            thermostat.powerMode = false;
+            $('#temperature').text(thermostat.temp);
+            $('#power-saving-status').text('off')
+        });
+
+
+      })
+
     </script>
 
 </section>
