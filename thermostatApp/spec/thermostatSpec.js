@@ -1,9 +1,10 @@
-beforeEach(function() {
-  thermostat = new Thermostat();
-});
-
 describe('Thermostat', function() {
-  describe('#initialize', function() {
+
+    beforeEach(function() {
+        thermostat = new Thermostat();
+    });
+
+    describe('#initialize', function() {
     it('temperature starts at 20 by default', function() {
       expect(thermostat.temp).toEqual(20);
     })
@@ -31,10 +32,10 @@ describe('Thermostat', function() {
 
   describe('#powerMode', function() {
     it('on by default', function() {
-      expect(thermostat.powerMode).toEqual(true);
+      expect(thermostat.powerMode).toBe(true);
     });
 
-    it('when on maximum temperature is 25', function() {
+    it('when on, maximum temperature is 25', function() {
         thermostat.temp = 25;
         thermostat.up();
         expect(thermostat.temp).toEqual(25);
